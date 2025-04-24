@@ -11,5 +11,9 @@ class About(View):
     
 class Recipe(View):
     def get(self, request, *args, **kwargs):
+        pass
         # get every item from each category
-        return 
+        
+        # pass into context
+
+        # render the template
