@@ -7,30 +7,27 @@
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
-                {% for post in post_list %}
-                <div class="col-md-4">
+                {% for category in categories %}
+                <div class="col-md-4">                    
                     <div class="card mb-4 h-100">
                         <div class="card-body">
-                            <div class="image-container">
-                                {% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top" src="{% static 'media/homepage-images/eid.jpg' %}" width="100%"
-                                    alt="placeholder image">
-                                {% else %}
-                                <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="{{ post.title }}">
-                                {% endif %}                                
+                            <div class="image-container">  
+                                {% if category.image %}                              
+                                <img class="card-img-top" src="{{ category.image.url }}" alt="{{ category.name }}">  
+                                {% endif %}                                                             
                             </div>
-                            <a href="{% url 'details_post' post.slug %}" class="post-link">
-                                <h2 class="card-title text-center">{{ post.category }}</h2>
-                            </a>
+                            <a href="{% url 'recipe_list' category.slug %}" class="post-link">
+                                <h2 class="card-title text-center">{{ category.name }}</h2>
+                            </a>                            
                             <hr> 
                         </div>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
+                {% if forloop.counter|divisibleby:3 %} 
             </div>
             <div class="row">
                 {% endif %}
-                {% endfor %}
+                {% endfor %}              
 
             </div>
         </div>

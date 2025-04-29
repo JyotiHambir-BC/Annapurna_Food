@@ -10,7 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Index.as_view(), name='index'),
     path('about/', About.as_view(), name='about'),
-    path('recipe/', RecipeListView.as_view(), name='recipe'),
-    path('recipe/<slug:category_slug>', RecipeCategoryView.as_view(), name='recipe-category'),
+    path('recipe/', RecipeCategoryView.as_view(), name='recipe'),
+    path('recipe/<slug:category_slug>', RecipeListView.as_view(), name='recipe-list'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

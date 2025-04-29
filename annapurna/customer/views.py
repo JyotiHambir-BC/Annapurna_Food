@@ -42,16 +42,17 @@ class About(View):
 #     def get(self, request, *args, **kwargs):
 #         return render(request, 'customer/detail_recipe.html')
 
-class RecipeListView(View):
+class RecipeCategoryView(View):
     def get (self, request, *args, **kwargs):
         categories = Category.objects.all()
-        return render(request, 'customer/recipe_list.html', {'categories': categories})
+        return render(request, 'customer/recipe_category.html', {'categories': categories})       
     
-class RecipeCategoryView(View):
+    
+class RecipeListView(View):
     def get (self, request, category_slug):
         category = get_object_or_404(Category, slug=category_slug)
         recipes = RecipeItem.objects.filter(category=category)
-        return render(request, 'customer/recipe_category.html', {
+        return render(request, 'customer/recipe_list.html', {
             'category' : category,
             'recipes' : recipes
         })
