@@ -1,0 +1,84 @@
+{% extends 'customer/base.html' %}
+
+{% block content %}
+<div class="card-deck">
+    
+    {% for app in appetizers %}
+    <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">        
+        <h5 class="card-title">{{ app.name }}</h5>
+        <p class="card-text"></p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    {% endfor %}
+
+    {% for snack in snacks %}
+    <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ snack.name }}</h5>
+        <p class="card-text">Description here</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    {% endfor %}
+
+    {% for dessert in desserts %}
+    <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ dessert.name }}</h5>
+        <p class="card-text">Description here</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    {% endfor %}
+
+    {% for chuttney in chuttney %}
+    <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ chuttney.name }}</h5>
+          <p class="card-text">Description here</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% for curry in curry %}
+    <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ curry.name }}</h5>
+          <p class="card-text">Description here</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% for drink in drinks %}
+    <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ drink.name }}</h5>
+          <p class="card-text">Description here</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% for rice in rice_dishes %}
+    <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ rice.name }}</h5>
+          <p class="card-text">Description here</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock content %}
