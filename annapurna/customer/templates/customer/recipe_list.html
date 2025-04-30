@@ -5,8 +5,8 @@
     
     {% for app in appetizers %}
     <div class="card">
-      <a href="{% url 'recipe-list' app.slug %}">
-      <img src="..." class="card-img-top" alt="...">
+      <a href="{% url 'recipe-list' category.slug %}">
+      <img src="{{ app.image.url }}" class="card-img-top" alt="{{ app.name }}">
       <div class="card-body">        
         <h5 class="card-title">{{ app.name }}</h5>
         <p class="card-text"></p>
