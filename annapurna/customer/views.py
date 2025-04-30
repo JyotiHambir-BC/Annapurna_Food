@@ -45,7 +45,9 @@ class About(View):
 class RecipeCategoryView(View):
     def get (self, request, *args, **kwargs):
         categories = Category.objects.all()
-        return render(request, 'customer/recipe_category.html', {'categories': categories})       
+        return render(request, 'customer/recipe_category.html', {'categories': categories})    
+
+    
     
     
 class RecipeListView(View):

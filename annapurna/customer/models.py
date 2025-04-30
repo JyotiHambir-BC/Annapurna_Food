@@ -13,6 +13,7 @@ class RecipeItem(models.Model):
         return self.name
     
 class Category(models.Model):
+    image = models.ImageField(upload_to='category_images/', null=True, blank=True)
     name = models.CharField(max_length=100)
     slug = models.SlugField(null=True, blank=True, unique=True)
 

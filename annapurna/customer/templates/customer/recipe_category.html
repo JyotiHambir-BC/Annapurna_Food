@@ -16,7 +16,7 @@
                                 <img class="card-img-top" src="{{ category.image.url }}" alt="{{ category.name }}">  
                                 {% endif %}                                                             
                             </div>
-                            <a href="{% url 'recipe_list' category.slug %}" class="post-link">
+                            <a href="{% url 'recipe-list' category.slug %}" class="post-link">
                                 <h2 class="card-title text-center">{{ category.name }}</h2>
                             </a>                            
                             <hr> 
