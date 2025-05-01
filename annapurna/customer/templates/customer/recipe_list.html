@@ -1,86 +1,52 @@
 {% extends 'customer/base.html' %}
 
 {% block content %}
+<!-- <h2>{{ category.name }}</h2>
 <div class="card-deck">
-    
-    {% for app in appetizers %}
+    {% for recipe in recipes %}
     <div class="card">
-      <a href="{% url 'recipe-list' category.slug %}">
-      <img src="{{ app.image.url }}" class="card-img-top" alt="{{ app.name }}">
-      <div class="card-body">        
-        <h5 class="card-title">{{ app.name }}</h5>
-        <p class="card-text"></p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </a>
-    </div>
-    {% endfor %}
-
-    {% for snack in snacks %}
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
+      <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.name }}">
       <div class="card-body">
-        <h5 class="card-title">{{ snack.name }}</h5>
-        <p class="card-text">Description here</p>
+        <h5 class="card-title">{{ recipe.name }}</h5>
+        <p class="card-text">{{ recipe.description|truncatewords:20 }}</p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
     {% endfor %}
+</div> -->
 
-    {% for dessert in desserts %}
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{ dessert.name }}</h5>
-        <p class="card-text">Description here</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    {% endfor %}
+<h2>Recipes in {{ category.name }}</h2>
 
-    {% for chuttney in chuttney %}
+<div class="card-deck">
+    {% for recipe in recipes %}
     <div class="card">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.name }}">
         <div class="card-body">
-          <h5 class="card-title">{{ chuttney.name }}</h5>
-          <p class="card-text">Description here</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <h5 class="card-title">{{ recipe.name }}</h5>
+            <p class="card-text">{{ recipe.description }}</p>
         </div>
     </div>
+    {% empty %}
+    <p>No recipes found in this category.</p>
     {% endfor %}
+</div>
 
-    {% for curry in curry %}
-    <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{ curry.name }}</h5>
-          <p class="card-text">Description here</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-    </div>
-    {% endfor %}
+<!-- Pagination Controls -->
+<div class="pagination mt-4">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
 
-    {% for drink in drinks %}
-    <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{ drink.name }}</h5>
-          <p class="card-text">Description here</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-    </div>
-    {% endfor %}
+      <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+      </span>
 
-    {% for rice in rice_dishes %}
-    <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{ rice.name }}</h5>
-          <p class="card-text">Description here</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-    </div>
-    {% endfor %}
-
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
 </div>
 {% endblock content %}

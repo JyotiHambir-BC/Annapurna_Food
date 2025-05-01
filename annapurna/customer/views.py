@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
+from django.core.paginator import Paginator
 from .models import RecipeItem, Category
 
 class Index(View):
@@ -19,6 +20,12 @@ class RecipeListView(View):
     def get(self, request, category_slug):
         # Get the category based on the slug
         category = get_object_or_404(Category, slug=category_slug)
+        all_recipes = RecipeItem.objects.filter(category=category)
+
+        # Pagination: 6 recipes per page
+        paginator = Paginator(all_recipes, 6)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
 
          # Filter RecipeItems based on the selected category
         recipes = RecipeItem.objects.filter(category=category)
@@ -26,6 +33,7 @@ class RecipeListView(View):
         context = {
             'category': category,
             'recipes': recipes,
+            'page_obj': page_obj,
         }
 
         
